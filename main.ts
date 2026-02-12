@@ -3,11 +3,14 @@
  */
 
 import { Plugin } from "obsidian";
+import AnsiUp from "ansi_up";
 
 export default class CodePlugin extends Plugin {
   async onload() {
     this.registerMarkdownCodeBlockProcessor("console", (source, el, ctx) => {
       const lines = source.split("\n");
+      const ansiUp = new AnsiUp();
+      ansiUp.use_classes = true;
 
       const pre = el.createEl("pre", { cls: "language-console" });
       for (const line of lines) {
@@ -22,9 +25,13 @@ export default class CodePlugin extends Plugin {
                 (m[1] === "#" ? " console-prompt-root" : "")
             }
           );
-          div.createEl("span", { text: m[2], cls: "console-command" });
+          // Parse ANSI codes in commands too
+          const cmdSpan = div.createEl("span", { cls: "console-command" });
+          cmdSpan.innerHTML = ansiUp.ansi_to_html(m[2]);
         } else {
-          pre.createEl("div", { text: line, cls: "console-output" });
+          // Parse ANSI escape sequences in output lines
+          const div = pre.createEl("div", { cls: "console-output" });
+          div.innerHTML = ansiUp.ansi_to_html(line);
         }
       }
     });
