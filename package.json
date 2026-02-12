@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-console",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "An Obsidian plugin which renders console commands and their output",
 	"main": "main.js",
 	"scripts": {

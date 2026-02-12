@@ -1,10 +1,10 @@
 {
 	"id": "console",
 	"name": "Console Markdown",
-	"version": "1.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "Renders console commands and their output, with ANSI colors.",
 	"author": "Daniel Ellermann amended by Andrew Maule and Claude Opus 4.6",
 	"authorUrl": "https://www.amc-world.de",
-	"isDesktopOnly": false
+	"isDesktopOnly": false,
+	"version": "1.1.0"
 }

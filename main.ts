@@ -3,7 +3,7 @@
  */
 
 import { Plugin } from "obsidian";
-import AnsiUp from "ansi_up";
+import {AnsiUp} from "ansi_up";
 
 export default class CodePlugin extends Plugin {
   async onload() {
